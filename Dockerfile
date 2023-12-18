@@ -1,6 +1,6 @@
 FROM continuumio/miniconda3
 
-
+# VERSION - 2.0.4-weights
 
 RUN mkdir -m777 /app
 WORKDIR /app
@@ -85,13 +85,16 @@ RUN mkdir -m777 -p ${WEIGHTS_DIR}
 
 
 # Part 6 - Task 256 for fast processing
-ENV WEIGHTS_URL_6="https://zenodo.org/record/6802052/files/Task256_TotalSegmentator_3mm_1139subj.zip"
-ENV WEIGHTS_ZIP_6="Task256_TotalSegmentator_3mm_1139subj.zip"
+# ENV WEIGHTS_URL_6="https://zenodo.org/record/6802052/files/Task256_TotalSegmentator_3mm_1139subj.zip"
+# ENV WEIGHTS_ZIP_6="Task256_TotalSegmentator_3mm_1139subj.zip"
 
+# Weight 2.0.4 - Task 297 for fast processing
+ENV WEIGHTS_URL_7="http://10.8.95.97:8080/models/totalsegmentator-nnunet/nnunetv2/v2.0.4-weights/Dataset297_TotalSegmentator_total_3mm_1559subj_v204.zip"
+ENV WEIGHTS_ZIP_7="Dataset297_TotalSegmentator_total_3mm_1559subj_v204.zip"
 
-RUN wget --directory-prefix ${WEIGHTS_DIR} ${WEIGHTS_URL_6} \
-    && unzip ${WEIGHTS_DIR}${WEIGHTS_ZIP_6} -d ${WEIGHTS_DIR} \
-    && rm ${WEIGHTS_DIR}${WEIGHTS_ZIP_6}
+RUN wget --directory-prefix ${WEIGHTS_DIR} ${WEIGHTS_URL_7} \
+    && unzip ${WEIGHTS_DIR}${WEIGHTS_ZIP_7} -d ${WEIGHTS_DIR} \
+    && rm ${WEIGHTS_DIR}${WEIGHTS_ZIP_7}
 
 # Set TOTALSEG_WEIGHTS_PATH ENV variable – this is auto-detected by TotalSegmentator
 # See: https://github.com/wasserth/TotalSegmentator/blob/f4651171a4c6eae686dd67b77efe6aa78911734d/totalsegmentator/libs.py#L77
