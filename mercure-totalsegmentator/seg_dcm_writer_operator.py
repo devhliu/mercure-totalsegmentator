@@ -58,7 +58,7 @@ class SegDICOMWriterOperator(Operator):
         # Describe the algorithm that created the segmentation
         algorithm_identification = hd.AlgorithmIdentificationSequence(
             name='TotalSegmentator',
-            version='v1.0',
+            version='v2.0',
             family=codes.DCM.ArtificialIntelligence
         )
         print('got to loop')
